@@ -26,5 +26,7 @@ for line in inputLines:
 # EOF, Add last Elf
 elves.append(elf)
 
-# Calculate Output
-print(f'Top Elf: {max(elves)}')
+# Calculate output
+elvesTop3 = sorted(elves, reverse=True)[:3]
+print(f'Top 3 Elves: {elvesTop3}')
+print(f'Top Elves: {sum(elvesTop3)}')
