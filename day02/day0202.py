@@ -7,7 +7,9 @@ inputPath = Path(__file__).with_name('input.txt')
 with inputPath.open('r') as f:
     inputLines = f.readlines()
 
-# Define adjacency list
+# Define adjacency lists
+playerWinList = {'A': 'B', 'B': 'C', 'C': 'A'}
+playerLoseList = {'A': 'C', 'B': 'A', 'C': 'B'}
 winsList = {1: 3, 2: 1, 3: 2}
 
 # Process input
@@ -17,11 +19,20 @@ for line in inputLines:
     line = line.strip()
 
     # Split played shapes
-    opponent, player = line.split()
+    opponentRAW, playerRAW = line.split()
+
+    # Determine player move
+    match playerRAW:
+        case 'X':
+            playerRAW = playerLoseList[opponentRAW]
+        case 'Y':
+            playerRAW = opponentRAW
+        case 'Z':
+            playerRAW = playerWinList[opponentRAW]
 
     # Convert char to ASCII code
-    opponent = ord(opponent) - 64
-    player = ord(player) - 87
+    opponent = ord(opponentRAW) - 64
+    player = ord(playerRAW) - 64
     print(f'Opponent: {opponent}, Player: {player}')
 
     # Draw

@@ -3,7 +3,7 @@
 from pathlib import Path
 
 # Read input
-inputPath = Path(__file__).with_name('input_day0101.txt')
+inputPath = Path(__file__).with_name('input.txt')
 with inputPath.open('r') as f:
     inputLines = f.readlines()
 
